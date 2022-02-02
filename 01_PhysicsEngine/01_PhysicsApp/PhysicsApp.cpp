@@ -1,45 +1,55 @@
-#include "Application2D.h"
+#include "PhysicsApp.h"
 #include "Texture.h"
 #include "Font.h"
 #include "Input.h"
+#include "Gizmos.h"
+#include <glm/glm.hpp>
 
-Application2D::Application2D() {
+//SEE LINE 86
+
+PhysicsApp::PhysicsApp() {
 
 }
 
-Application2D::~Application2D() {
+PhysicsApp::~PhysicsApp() {
 
 }
 
-bool Application2D::startup() {
+bool PhysicsApp::Startup() 
+{
+	//increase the 2D line count to maximize the no. of objects we can draw
+	aie::Gizmos::create(255U, 255U, 65535U, 65535U);
 	
 	m_2dRenderer = new aie::Renderer2D();
-
-	m_texture = new aie::Texture("./textures/numbered_grid.tga");
-	m_shipTexture = new aie::Texture("./textures/ship.png");
-
 	m_font = new aie::Font("./font/consolas.ttf", 32);
-	
-	m_timer = 0;
+
+	//create new physics scene and set timestep
+	m_physicsScene = new PhysicsScene();
+	m_physicsScene->SetTimeStep(0.01f);
 
 	return true;
 }
 
-void Application2D::shutdown() {
+void PhysicsApp::shutdown() {
 	
 	delete m_font;
-	delete m_texture;
-	delete m_shipTexture;
 	delete m_2dRenderer;
 }
 
-void Application2D::update(float deltaTime) {
+void PhysicsApp::Update(float deltaTime) {
 
-	m_timer += deltaTime;
+	//delete
+	//m_timer += deltaTime;
 
 	// input example
 	aie::Input* input = aie::Input::getInstance();
 
+	aie::Gizmos::clear();
+	m_physicsScene->Update(deltaTime);
+	m_physicsScene->Draw();
+
+	//delete input camera controls
+	/*
 	// Update the camera position using the arrow keys
 	float camPosX;
 	float camPosY;
@@ -58,13 +68,14 @@ void Application2D::update(float deltaTime) {
 		camPosX += 500.0f * deltaTime;
 
 	m_2dRenderer->setCameraPos(camPosX, camPosY);
+	*/
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
 		quit();
 }
 
-void Application2D::draw() {
+void PhysicsApp::Draw() {
 
 	// wipe the screen to the background colour
 	clearScreen();
@@ -72,14 +83,14 @@ void Application2D::draw() {
 	// begin drawing sprites
 	m_2dRenderer->begin();
 
-	// demonstrate animation
-	m_2dRenderer->setUVRect(int(m_timer) % 8 / 8.0f, 0, 1.f / 8, 1.f / 8);
-	m_2dRenderer->drawSprite(m_texture, 200, 200, 100, 100);
+	//draw stuff here
+	static float aspectRatio = 16 / 9.0f;
+	//aie::Gizmos::draw2D(glm::ortho<float>(-100, 100,
+	//	-100 / aspectRatio, 100 / aspectRatio, -1.0f, 1.0f));
 
-	// demonstrate spinning sprite
-	m_2dRenderer->setUVRect(0,0,1,1);
-	m_2dRenderer->drawSprite(m_shipTexture, 600, 400, 0, 0, m_timer, 1);
 
+	//delete previous draws
+	/*
 	// draw a thin line
 	m_2dRenderer->drawLine(300, 300, 600, 400, 2, 1);
 
@@ -99,6 +110,8 @@ void Application2D::draw() {
 	char fps[32];
 	sprintf_s(fps, 32, "FPS: %i", getFPS());
 	m_2dRenderer->drawText(m_font, fps, 0, 720 - 32);
+	*/
+
 	m_2dRenderer->drawText(m_font, "Press ESC to quit!", 0, 720 - 64);
 
 	// done drawing sprites

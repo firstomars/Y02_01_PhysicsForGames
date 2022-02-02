@@ -171,13 +171,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Application2D.cpp" />
+    <ClCompile Include="PhysicsApp.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="PhysicsScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application2D.h" />
+    <ClInclude Include="PhysicsApp.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="PhysicsScene.h" />
   </ItemGroup>

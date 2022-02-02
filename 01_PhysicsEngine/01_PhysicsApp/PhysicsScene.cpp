@@ -2,8 +2,8 @@
 
 PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(glm::vec2(0,0))
 {
-	m_timeStep = 0.01f;
-	m_gravity = { 0,0 };
+	//m_timeStep = 0.01f;
+	//m_gravity = { 0,0 };
 }
 
 PhysicsScene::~PhysicsScene()
@@ -24,13 +24,15 @@ void PhysicsScene::RemoveActor(PhysicsObject* actor)
 
 void PhysicsScene::Update(float deltaTime)
 {
-	//calls update fn of each actor
-
 	static float accumulatedTime = 0.0f;
+	
+	//is deltaTime the amount of time passed in the last frame?
 	accumulatedTime += deltaTime;
 
+	//update physics of objects at a fixed time step
 	while (accumulatedTime >= m_timeStep)
 	{
+		//calls update fn of each actor
 		for (auto actor : m_actors) actor->FixedUpdate(m_gravity, m_timeStep);
 
 		accumulatedTime -= m_timeStep;

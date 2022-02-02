@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Application2D.cpp">
+    <ClCompile Include="PhysicsApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -24,12 +24,9 @@
     <ClCompile Include="PhysicsScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application2D.h">
+    <ClInclude Include="PhysicsApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsScene.h">

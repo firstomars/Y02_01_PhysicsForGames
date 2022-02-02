@@ -1,5 +1,7 @@
 #pragma once
 
+#include <glm/glm.hpp>
+
 //this is a pure abstract base class
 //can’t construct an instance of this - can only be created by children classes
 //class is too general.
