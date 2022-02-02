@@ -133,7 +133,7 @@ bool PhysicsScene::Circle2Plane(PhysicsObject* a_circle, PhysicsObject* a_plane)
 		if (intersection > 0 && velocityOutOfThePlane < 0)
 		{
 			// We can set the circles response.
-			circle->ApplyForce(-circle->GetVelocity() * circle->GetMass());
+			circle->ApplyForce(-circle->GetVelocity() * circle->GetMass(), glm::vec2(0));
 
 			return true;
 		}
@@ -158,7 +158,8 @@ bool PhysicsScene::Circle2Circle(PhysicsObject* a_circle, PhysicsObject* a_other
 
 		if (penetration > 0)
 		{			
-			circle1->ResolveCollision(circle2);
+			//circle1->ResolveCollision(circle2);
+			circle1->ResolveCollision(circle2, 0.5f * (circle1->GetPosition() + circle2->GetPosition()));
 			
 			return true;
 		}

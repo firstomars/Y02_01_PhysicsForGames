@@ -9,6 +9,7 @@ Plane::Plane(glm::vec2 a_normal, float a_distanceToOrigin) : PhysicsObject(PLANE
 	m_normal = a_normal;
 	m_distanceToOrigin = a_distanceToOrigin;
 	m_color = glm::vec4(0, 1, 0, 1);
+	m_elasticity = 1;
 }
 
 Plane::Plane() : PhysicsObject(PLANE)

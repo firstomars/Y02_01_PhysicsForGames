@@ -18,7 +18,9 @@ public:
 
 	//===
 	//COLLISION RESOLUTION 
-	void ResolveCollision(Rigidbody* a_actor2);
+	//void ResolveCollision(Rigidbody* a_actor2);
+	void ResolveCollision(Rigidbody* a_otherActor, glm::vec2 a_contact,
+		glm::vec2* a_collisionNormal = nullptr);
 	
 	virtual bool CheckCollision(PhysicsObject* pOther) = 0;
 

@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{AF59BB0B-E059-4773-83DC-728A949647DA}</ProjectGuid>
+    <ProjectGuid>{8C55DEDA-4DE7-4DB4-BFF9-E14F588A236A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Bootstrap</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>

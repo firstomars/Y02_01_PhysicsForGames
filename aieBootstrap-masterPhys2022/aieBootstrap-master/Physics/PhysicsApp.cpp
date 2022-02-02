@@ -98,19 +98,16 @@ void PhysicsApp::draw() {
 void PhysicsApp::CreateCircle()
 {
 	//cue ball
-	Circle* ball1 = new Circle(glm::vec2(-20, 0), glm::vec2(0, 0), 1.7f, 4.f,
+	Circle* ball1 = new Circle(glm::vec2(-20, 0), glm::vec2(0, 0), 4.f, 4.f,
 		glm::vec4(1, 1, 1, 1));
-	Circle* ball2 = new Circle(glm::vec2(10, 0), glm::vec2(0, 0), 1.6f, 4.f,
+	Circle* ball2 = new Circle(glm::vec2(10, 0), glm::vec2(0, 0), 4.f, 4.f,
 		glm::vec4(0, 1, 0, 1));
 
 	m_physicsScene->AddActor(ball1);
-	//m_physicsScene->AddActor(ball2);
+	m_physicsScene->AddActor(ball2);
 
-
-
-
-	ball1->ApplyForce(glm::vec2(22.22f, -20), glm::vec2(0));
-	//ball2->ApplyForce(glm::vec2(-15, 0));
+	ball1->ApplyForce(glm::vec2(20.0f, -20.0f), ball1->GetPosition());
+	ball2->ApplyForce(glm::vec2(-20.f, -20.0f), ball2->GetPosition());
 
 	Plane* plane = new Plane(glm::vec2(0, 1), -30);
 	m_physicsScene->AddActor(plane);
@@ -118,12 +115,12 @@ void PhysicsApp::CreateCircle()
 
 void PhysicsApp::CollisionDetectionTest()
 {
-	Circle* ball1 = new Circle(glm::vec2(-20, 0), glm::vec2(0, 0), 4.f, 4.f, glm::vec4(1, 0, 0, 1));
-	Circle* ball2 = new Circle(glm::vec2(10, 0),  glm::vec2(0, 0), 4.f, 4.f, glm::vec4(0, 1, 0, 1));
-	Plane* plane = new Plane(glm::vec2(0, 1), -30);
+	//Circle* ball1 = new Circle(glm::vec2(-20, 0), glm::vec2(0, 0), 4.f, 4.f, glm::vec4(1, 0, 0, 1));
+	//Circle* ball2 = new Circle(glm::vec2(10, 0),  glm::vec2(0, 0), 4.f, 4.f, glm::vec4(0, 1, 0, 1));
+	//Plane* plane = new Plane(glm::vec2(0, 1), -30);
 
-	m_physicsScene->AddActor(ball1);
-	m_physicsScene->AddActor(ball2);
-	m_physicsScene->AddActor(plane);
+	//m_physicsScene->AddActor(ball1);
+	//m_physicsScene->AddActor(ball2);
+	//m_physicsScene->AddActor(plane);
 
 }
