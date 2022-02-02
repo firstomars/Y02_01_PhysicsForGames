@@ -11,6 +11,7 @@
 PhysicsScene::PhysicsScene() : 
 	m_timeStep(0.01f), m_gravity(glm::vec2(0, 0))
 {
+
 }
 
 PhysicsScene::~PhysicsScene()
@@ -99,8 +100,6 @@ void PhysicsScene::CheckForCollisions()
 			}
 		}
 	}
-
-
 }
 
 bool PhysicsScene::Plane2Plane(PhysicsObject* a_plane, PhysicsObject* a_otherPlane)

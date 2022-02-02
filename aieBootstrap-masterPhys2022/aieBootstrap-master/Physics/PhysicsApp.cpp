@@ -98,9 +98,9 @@ void PhysicsApp::draw() {
 void PhysicsApp::CreateCircle()
 {
 	//cue ball
-	Circle* ball1 = new Circle(glm::vec2(-20, 0), glm::vec2(0, 0), 4.f, 4.f,
+	Circle* ball1 = new Circle(glm::vec2(-20, 0), glm::vec2(0, 0), 1.7f, 4.f,
 		glm::vec4(1, 1, 1, 1));
-	Circle* ball2 = new Circle(glm::vec2(10, 0), glm::vec2(0, 0), 4.f, 4.f,
+	Circle* ball2 = new Circle(glm::vec2(10, 0), glm::vec2(0, 0), 1.6f, 4.f,
 		glm::vec4(0, 1, 0, 1));
 
 	m_physicsScene->AddActor(ball1);

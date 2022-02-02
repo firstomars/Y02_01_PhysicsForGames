@@ -9,7 +9,7 @@ Circle::Circle(glm::vec2 a_position, glm::vec2 a_velocity,
 	m_radius = a_radius;
 	m_color	 = a_color;
 	m_isKinematic = false;
-	//m_moment = 0.5f * m_mass * m_radius * m_radius;
+	m_moment = 0.5f * m_mass * m_radius * m_radius;
 }
 
 Circle::~Circle()

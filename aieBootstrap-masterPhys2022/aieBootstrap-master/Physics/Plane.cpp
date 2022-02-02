@@ -1,7 +1,7 @@
 #include "Plane.h"
-
+#include "Rigidbody.h"
 #include <Gizmos.h>
-#include <glm/ext.hpp>
+//#include <glm/ext.hpp>
 
 
 Plane::Plane(glm::vec2 a_normal, float a_distanceToOrigin) : PhysicsObject(PLANE)
@@ -10,6 +10,7 @@ Plane::Plane(glm::vec2 a_normal, float a_distanceToOrigin) : PhysicsObject(PLANE
 	m_distanceToOrigin = a_distanceToOrigin;
 	m_color = glm::vec4(0, 1, 0, 1);
 	m_elasticity = 1;
+	m_isKinematic = true;
 }
 
 Plane::Plane() : PhysicsObject(PLANE)
@@ -17,6 +18,8 @@ Plane::Plane() : PhysicsObject(PLANE)
 	m_normal = glm::vec2(0, 1);
 	m_distanceToOrigin = 0;
 	m_color = glm::vec4(1,1,1,1);
+	m_isKinematic = true;
+	m_elasticity = 1;
 }
 
 Plane::~Plane()
@@ -42,4 +45,18 @@ void Plane::MakeGizmo()
 
 	aie::Gizmos::add2DTri(start, end, start - m_normal * 10.f, m_color, m_color, colorFade);
 	aie::Gizmos::add2DTri(end, end - m_normal * 10.f, start - m_normal * 10.f, m_color, colorFade, colorFade);
+}
+
+void Plane::ResolvePlaneCollision(Rigidbody* a_rigidbody, glm::vec2 a_contact)
+{
+	//the position at witch we'll apply the force relative to the objet's center of mass
+	glm::vec2 localContact = a_contact - a_rigidbody->GetPosition();
+	//the plane will not move so the relative velocity is just the rigidbody's velocity at the contact point
+	glm::vec2 vRel = a_rigidbody->GetVelocity() * glm::vec2(-localContact.y, localContact.x);
+	float velocityIntoPlane = glm::dot(vRel, m_normal);
+	//perfect elasticity collision [ToBeUpdated]
+	float e = 1;
+	float j = -(1 + e) * velocityIntoPlane * (1 / a_rigidbody->GetMass());
+	glm::vec2 force = m_normal * j;
+	a_rigidbody->ApplyForce(force, a_contact - a_rigidbody->GetPosition());
 }

@@ -27,13 +27,13 @@ public:
 	void ApplyForce(glm::vec2 a_force, glm::vec2 a_contact);
 	//void ApplyForceToActor(Rigidbody* a_actor2, glm::vec2 a_force);
 
-
 	glm::vec2 GetPosition() { return m_position; }
 	glm::vec2 GetVelocity() { return m_velocity; }
 	float GetRotation() { return m_rotation; }
 	float GetMass() { return m_mass; }
 
 	float GetKineticEnergy();
+	bool GetIsKinetic() { return m_isKinematic; }
 	float GetAngularVelocity() { return m_angularVelocity; }
 	float GetMoment() { return m_moment; }
 
@@ -45,4 +45,3 @@ protected:
 	float m_angularVelocity;
 	float m_moment;
 };
-

@@ -27,7 +27,7 @@ public:
 	ShapeType GetShapeID() { return m_shapeID; }
 
 	float GetElasticity() { return m_elasticity; }
-	void SetElasticity(float a_elasticity) { m_elasticity = m_elasticity; }
+	void SetElasticity(float a_elasticity) { m_elasticity = a_elasticity; }
 
 protected:
 	ShapeType m_shapeID;

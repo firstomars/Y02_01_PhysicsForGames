@@ -14,7 +14,6 @@ Rigidbody::Rigidbody(ShapeType a_shapeID, glm::vec2 a_position,
 
 void Rigidbody::FixedUpdate(glm::vec2 a_gravity, float a_timeStep)
 {
-	
 	m_position += GetVelocity() * a_timeStep;
 	ApplyForce(a_gravity * GetMass() * a_timeStep, glm::vec2(0));
 
@@ -32,7 +31,7 @@ void Rigidbody::ResolveCollision(Rigidbody* a_otherActor, glm::vec2 a_contact, g
 		a_otherActor->GetPosition() - m_position);
 
 	// get perpendicular vector to the collision normal
-	glm::vec2 perpendicularColNorm(normal.y - normal.x);
+	glm::vec2 perpendicularColNorm(normal.y, -normal.x);
 
 	float radiusThis = glm::dot(a_contact - m_position, -perpendicularColNorm);
 	float radiusOther = glm::dot(a_contact - a_otherActor->GetPosition(), perpendicularColNorm);
