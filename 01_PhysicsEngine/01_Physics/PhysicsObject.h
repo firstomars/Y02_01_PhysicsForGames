@@ -8,6 +8,13 @@
 //Classes derived from PhsyicsObject will have to provide
 //implementtaions of fixedUpdateand draw in order to be constructable
 
+enum ShapeType
+{
+	PLANE = 0,
+	CIRCLE,
+	BOX
+};
+
 class PhysicsObject
 {
 public:
@@ -16,7 +23,14 @@ public:
 	virtual void ResetPosition() {};
 
 protected:
-	PhysicsObject() {};
+	PhysicsObject(ShapeType a_shapeID) : m_shapeID(a_shapeID) {}
+
+private:
+
+public:
+protected:
+	ShapeType m_shapeID;
+private:
 
 };
 

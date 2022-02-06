@@ -21,6 +21,8 @@ public:
 	void SetTimeStep(const float timeStep) { m_timeStep = timeStep; }
 	float GetTimeStep() { return m_timeStep; }
 
+	static bool CircleToCircle(PhysicsObject* a_actor1, PhysicsObject* a_actor2);
+
 protected:
 	glm::vec2 m_gravity;
 	float m_timeStep;

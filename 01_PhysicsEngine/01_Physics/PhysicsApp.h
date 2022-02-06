@@ -3,7 +3,7 @@
 #include "Application.h"
 #include "Renderer2D.h"
 #include "PhysicsScene.h"
-#include <glm/glm.hpp>
+#include "Circle.h"
 
 class PhysicsApp : public aie::Application {
 public:
@@ -11,11 +11,15 @@ public:
 	PhysicsApp();
 	virtual ~PhysicsApp();
 
-	virtual bool Startup();
+	virtual bool startup();
 	virtual void shutdown();
 
-	virtual void Update(float deltaTime);
-	virtual void Draw();
+	virtual void update(float deltaTime);
+	virtual void draw();
+
+protected:
+private:
+	void OnKeyPress();
 
 protected:
 
@@ -27,4 +31,11 @@ protected:
 	PhysicsScene* m_physicsScene;
 
 	float m_timer;
+
+private:
+	Circle* circleTest1;
+	Circle* circleTest2;
+	Circle* circleTest3;
+
+	float m_direction;
 };
