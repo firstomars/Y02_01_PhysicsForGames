@@ -4,6 +4,7 @@
 #include "Renderer2D.h"
 #include "PhysicsScene.h"
 #include "Circle.h"
+#include "Input.h"
 
 class PhysicsApp : public aie::Application {
 public:
@@ -12,9 +13,13 @@ public:
 	virtual ~PhysicsApp();
 
 	virtual bool startup();
+	void SceneRocket();
+	void SceneCircleCollision();
 	virtual void shutdown();
 
 	virtual void update(float deltaTime);
+	void ApplyRocketExhaust();
+	void SetRocketDirection(aie::Input* input);
 	virtual void draw();
 
 protected:

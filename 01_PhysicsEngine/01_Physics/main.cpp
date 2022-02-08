@@ -1,7 +1,7 @@
 #include "PhysicsApp.h"
 
-int main() {
-	
+int main() 
+{
 	// allocation
 	auto app = new PhysicsApp();
 
@@ -12,4 +12,4 @@ int main() {
 	delete app;
 
 	return 0;
-}
+} 

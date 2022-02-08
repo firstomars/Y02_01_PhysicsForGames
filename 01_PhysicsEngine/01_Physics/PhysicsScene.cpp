@@ -26,6 +26,15 @@ void PhysicsScene::RemoveActor(PhysicsObject* actor)
 	if (it != m_actors.end()) m_actors.erase(it);
 }
 
+//function pointer array for doing our collisions
+typedef bool(*fn)(PhysicsObject*, PhysicsObject*);
+
+static fn collisionFunctionArray[] =
+{
+	PhysicsScene::Plane2Plane,	PhysicsScene::Plane2Sphere,
+	PhysicsScene::CircleToPlane, PhysicsScene::Circle2Circle,
+};
+
 void PhysicsScene::Update(float deltaTime)
 {
 	static float accumulatedTime = 0.0f;
@@ -93,7 +102,5 @@ bool PhysicsScene::CircleToCircle(PhysicsObject* a_actor1, PhysicsObject* a_acto
 
 		// TODO if the spheres touch, set their velocities to zero for now
 	}
-
-	
 	return false;
 }
